@@ -9,6 +9,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity  {
 
@@ -25,7 +26,11 @@ public class MainActivity extends AppCompatActivity  {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
                 if(i == 1){
-                    startActivity(new Intent(MainActivity.this,zalogaActivity.class));
+                    //startActivity(new Intent(MainActivity.this,zalogaActivity.class));
+                    String skupina = parent.getItemAtPosition(i).toString();
+                    Toast.makeText(parent.getContext(), skupina, Toast.LENGTH_SHORT).show();
+
+
                 }
                 if(i == 2){
 
@@ -47,7 +52,14 @@ public class MainActivity extends AppCompatActivity  {
                 startActivity(new Intent(MainActivity.this, zalogaActivity.class));
             }
         });
-
+        //gumb registracija
+        final Button buttonreg = findViewById(R.id.postani);
+        buttonreg.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                // Code here executes on main thread after user presses button
+                startActivity(new Intent(MainActivity.this, regActivity.class));
+            }
+        });
 
 
     }
