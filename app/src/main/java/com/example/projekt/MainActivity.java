@@ -15,7 +15,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity  {
 
-    int registracija = 0;
+
+    String skupina;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,14 +31,11 @@ public class MainActivity extends AppCompatActivity  {
             public void onItemSelected(AdapterView<?> parent, View view, int i, long l) {
 
                 //startActivity(new Intent(MainActivity.this,zalogaActivity.class));
-                String skupina = parent.getItemAtPosition(i).toString();
-                Toast.makeText(parent.getContext(), skupina, Toast.LENGTH_SHORT).show();
-                if(i> 0 & registracija == 1) {
-                    Intent intent = new Intent(MainActivity.this, regActivity.class);
-                    intent.putExtra(Intent.EXTRA_TEXT, skupina);
-                    startActivity(intent);
-                    registracija = 0;
+                skupina = parent.getItemAtPosition(i).toString();
+                if (i> 0){
+                    Toast.makeText(parent.getContext(), skupina, Toast.LENGTH_SHORT).show();
                 }
+
 
 
             }
@@ -63,7 +61,10 @@ public class MainActivity extends AppCompatActivity  {
             public void onClick(View v) {
                 // Code here executes on main thread after user presses button
                 //startActivity(new Intent(MainActivity.this, regActivity.class));
-                registracija = 1;
+
+                Intent intent = new Intent(MainActivity.this, regActivity.class);
+                intent.putExtra(Intent.EXTRA_TEXT, skupina);
+                startActivity(intent);
 
 
             }
